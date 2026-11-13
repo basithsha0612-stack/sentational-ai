@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SENTINEL AI: Next-Generation Network Intrusion Detection System powered by Ensemble Machine Learning, Real-Time Deep Packet Inspection, and Automated Forensic Incident Response.">
+    <title>SENTINEL AI // Next-Gen Autonomous Intrusion Detection System</title>
+
+    <!-- Modern Typography from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+</head>
+
+<body class="theme-dark">
+    <!-- Scanline & Ambient Grid FX -->
+    <div class="cyber-grid-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow cyan" aria-hidden="true"></div>
+    <div class="ambient-glow magenta" aria-hidden="true"></div>
+
+    <!-- Main App Shell -->
+    <div class="app-container">
+
+        <!-- TOP NAVIGATION BAR -->
+        <header class="top-header" id="topHeader">
+            <div class="brand-section">
+                <div class="brand-logo-wrap">
+                    <img src="assets/logo.jpg" alt="Sentinel AI Shield" class="brand-logo-img" id="brandLogo">
+                    <div class="logo-pulse-ring"></div>
+                </div>
+                <div class="brand-titles">
+                    <div class="brand-name">
+                        <span class="highlight">SENTINEL</span>.AI
+                        <span class="version-tag">v4.8 ENTERPRISE</span>
+                    </div>
+                    <div class="brand-sub">AUTONOMOUS NETWORK INTRUSION DETECTION SYSTEM</div>
+                </div>
+            </div>
+
+            <!-- Live SOC System Indicators -->
+            <div class="soc-indicators">
+                <div class="indicator-item" title="Model Status">
+                    <span class="indicator-dot active-green"></span>
+                    <span class="indicator-label">ML CORE:</span>
+                    <span class="indicator-val text-green" id="modelStatusText">ENSEMBLE ACTIVE</span>
+                </div>
+                <div class="indicator-item" title="Live Traffic Feed">
+                    <span class="indicator-dot pulse-cyan"></span>
+                    <span class="indicator-label">INGESTION:</span>
+                    <span class="indicator-val" id="ingestRateText">14.8 Gbps</span>
+                </div>
+                <div class="indicator-item" title="Firewall Shield">
+                    <span class="indicator-dot active-cyan"></span>
+                    <span class="indicator-label">WAF/IPS:</span>
+                    <span class="indicator-val text-cyan">INLINE ENFORCED</span>
+                </div>
+            </div>
+
+            <!-- Controls & User Profile -->
+            <div class="header-actions">
+                <!-- Live Traffic Toggle -->
+                <button class="btn btn-icon-text" id="toggleLiveStreamBtn"
+                    title="Toggle Real-Time Background Traffic Simulation">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="2"></circle>
+                        <path
+                            d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14">
+                        </path>
+                    </svg>
+                    <span id="liveStreamBtnLabel">Live Stream: ON</span>
+                </button>
+
+                <!-- Sound FX Toggle -->
+                <button class="btn btn-icon" id="toggleAudioBtn" title="Mute/Unmute Audio Synthesizer Effects">
+                    <svg class="icon sound-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+                    <svg class="icon sound-off-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                </button>
+
+                <!-- User Badge / Auth State -->
+                <div class="user-badge" id="headerUserBadge">
+                    <div class="avatar-ring">
+                        <span class="user-initials" id="userInitials">AM</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name" id="headerUserName">Alex Mercer</div>
+                        <div class="user-clearance" id="headerUserClearance">SOC LEAD // L3 CLEARANCE</div>
+                    </div>
+                    <button class="btn-logout" id="logoutBtn" title="Sign Out & Lock Terminal">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- WORKFLOW PROCESS BAR (Matching User's Architecture Flow) -->
+        <nav class="flow-stepper-container" id="flowStepperNav" aria-label="IDS Workflow Stages">
+            <div class="flow-track">
+                <!-- Step 1: Login -->
+                <button class="flow-step" data-target="view-login" id="stepNodeLogin">
+                    <div class="step-num">01</div>
+                    <div class="step-info">
+                        <span class="step-title">User Login</span>
+                        <span class="step-desc">SOC Clearance</span>
+                    </div>
+                    <span class="step-badge success">SECURE</span>
+                </button>
+                <div class="flow-arrow">→</div>
+
+                <!-- Step 2: IDS Dashboard -->
+                <button class="flow-step active" data-target="view-dashboard" id="stepNodeDashboard">
+                    <div class="step-num">02</div>
+                    <div class="step-info">
+                        <span class="step-title">IDS Dashboard</span>
+                        <span class="step-desc">Live Telemetry & Radar</span>
+                    </div>
+                    <span class="step-badge active">MONITORING</span>
+                </button>
+                <div class="flow-arrow">→</div>
+
+                <!-- Step 3: Enter / Upload Network Data -->
+                <button class="flow-step" data-target="view-ingest" id="stepNodeIngest">
+                    <div class="step-num">03</div>
+                    <div class="step-info">
+                        <span class="step-title">Upload / Enter Data</span>
+                        <span class="step-desc">Packet Crafter & Datasets</span>
+                    </div>
+                    <span class="step-badge neutral">INPUT</span>
+                </button>
+                <div class="flow-arrow">→</div>
+
+                <!-- Step 4: AI/ML Analysis -->
+                <button class="flow-step" data-target="view-analysis" id="stepNodeAnalysis">
+                    <div class="step-num">04</div>
+                    <div class="step-info">
+                        <span class="step-title">AI/ML Analysis</span>
+                        <span class="step-desc">Ensemble Inference</span>
+                    </div>
+                    <span class="step-badge ai">NEURAL NET</span>
+                </button>
+                <div class="flow-arrow">→</div>
+
+                <!-- Step 5: Verdict (Normal vs Intrusion) -->
+                <button class="flow-step" data-target="view-verdict" id="stepNodeVerdict">
+                    <div class="step-num">05</div>
+                    <div class="step-info">
+                        <span class="step-title">Normal / Intrusion</span>
+                        <span class="step-desc">Decision Matrix</span>
+                    </div>
+                    <span class="step-badge ready" id="verdictStepBadge">AWAITING</span>
+                </button>
+                <div class="flow-arrow">→</div>
+
+                <!-- Step 6: Alert + Report -->
+                <button class="flow-step" data-target="view-report" id="stepNodeReport">
+                    <div class="step-num">06</div>
+                    <div class="step-info">
+                        <span class="step-title">Alert + Report</span>
+                        <span class="step-desc">Forensics & SOAR</span>
+                    </div>
+                    <span class="step-badge alert" id="reportStepBadge">REPORT</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- CONTENT VIEW CONTAINER -->
+        <main class="main-viewport" id="mainViewport">
+
+            <!-- ========================================== -->
+            <!-- VIEW 1: USER LOGIN / SOC AUTHENTICATION    -->
+            <!-- ========================================== -->
+            <section class="view-panel" id="view-login">
+                <div class="login-wrapper">
+                    <div class="login-glass-card">
+
+                        <div class="login-card-header">
+                            <div class="cyber-shield-icon-large">
+                                <img src="assets/logo.jpg" alt="Sentinel Logo" class="login-icon-img">
+                            </div>
+                            <h1 class="login-title">SECURITY OPERATIONS PORTAL</h1>
+                            <p class="login-subtitle">DEFENSE INTELLIGENCE & TELEMETRY ACCESS GATEWAY</p>
+                            <div class="clearance-banner">RESTRICTED ACCESS // LEVEL 3 CLEARANCE REQUIRED</div>
+                        </div>
+
+                        <!-- Quick Demo Accounts Switcher -->
+                        <div class="quick-credentials-box">
+                            <span class="quick-cred-label">QUICK ROLE PRESETS:</span>
+                            <div class="quick-cred-buttons">
+                                <button type="button" class="btn-role-chip active" data-name="Alex Mercer"
+                                    data-role="SOC Level 3 Analyst" data-clearance="TOP SECRET // SCI"
+                                    data-initials="AM">
+                                    Analyst (Alex Mercer)
+                                </button>
+                                <button type="button" class="btn-role-chip" data-name="Elena Rostova"
+                                    data-role="Senior Threat Hunter" data-clearance="DIRECTORATE // ALPHA"
+                                    data-initials="ER">
+                                    Threat Hunter (Elena Rostova)
+                                </button>
+                                <button type="button" class="btn-role-chip" data-name="Marcus Vance"
+                                    data-role="Chief Information Security Officer" data-clearance="EXECUTIVE // OMNI"
+                                    data-initials="MV">
+                                    CISO (Marcus Vance)
+                                </button>
+                            </div>
+                        </div>
+
+                        <form id="loginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="loginUsername">OPERATOR IDENTIFIER</label>
+                                <div class="input-with-icon">
+                                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <input type="text" id="loginUsername" required value="alex.mercer@sentinel.defense"
+                                        autocomplete="username">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword">CRYPTOGRAPHIC TOKEN / KEY</label>
+                                <div class="input-with-icon">
+                                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input type="password" id="loginPassword" required value="••••••••••••"
+                                        autocomplete="current-password">
+                                </div>
+                            </div>
+
+                            <!-- Biometric Scan Visual Toggle -->
+                            <div class="biometric-scan-zone" id="biometricZone">
+                                <div class="fingerprint-scan-anim">
+                                    <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5">
+                                        <path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5"></path>
+                                        <path d="M12 6a6 6 0 0 0-6 6c0 2.21 1.2 4.15 2.98 5.18"></path>
+                                        <path d="M12 10a2 2 0 0 0-2 2c0 .73.4 1.38 1 1.72"></path>
+                                        <path d="M12 2a10 10 0 0 1 10 10c0 4.42-2.87 8.17-6.84 9.5"></path>
+                                        <path d="M12 6a6 6 0 0 1 6 6c0 2.21-1.2 4.15-2.98 5.18"></path>
+                                        <path d="M12 10a2 2 0 0 1 2 2c0 .73-.4 1.38-1 1.72"></path>
+                                    </svg>
+                                    <div class="laser-scanner"></div>
+                                </div>
+                                <div class="biometric-text">
+                                    <span class="bio-primary">BIOMETRIC HARDWARE READY</span>
+                                    <span class="bio-sub">Hardware token verified via FIDO2 / YubiKey</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-glow btn-block" id="loginSubmitBtn">
+                                <span class="btn-text">INITIALIZE SECURE SESSION</span>
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <div class="login-footer-security">
+                            <span class="security-chip">SHA-512 SECURED</span>
+                            <span class="security-chip">ZERO TRUST POLICY</span>
+                            <span class="security-chip">STIG COMPLIANT</span>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- VIEW 2: IDS DASHBOARD                      -->
+            <!-- ========================================== -->
+            <section class="view-panel active" id="view-dashboard">
+
+                <!-- Dashboard Top Banner -->
+                <div class="dashboard-hero-banner">
+                    <div class="hero-left">
+                        <div class="badge-live-pulse">
+                            <span class="ping-circle"></span>
+                            <span class="badge-text">LIVE SENSOR MESH</span>
+                        </div>
+                        <h2 class="hero-title">PERIMETER TELEMETRY & THREAT OVERVIEW</h2>
+                        <p class="hero-subtitle">Continuous Deep Packet Inspection across Backbone Taps & Edge Firewalls
+                        </p>
+                    </div>
+                    <div class="hero-right">
+                        <button class="btn btn-secondary" id="dashGoToUploadBtn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <span>Upload / Enter Network Data</span>
+                        </button>
+                        <button class="btn btn-primary" id="dashInspectLatestBtn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                            <span>Inspect Live Threat With AI</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Metric Cards Row -->
+                <div class="metrics-grid">
+
+                    <div class="metric-card cyan">
+                        <div class="metric-header">
+                            <span class="metric-label">PACKETS INSPECTED (24H)</span>
+                            <div class="metric-icon-wrap cyan">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric-value-wrap">
+                            <span class="metric-value" id="kpiTotalPackets">2,841,920</span>
+                            <span class="metric-delta positive">+42.8k/s</span>
+                        </div>
+                        <div class="metric-subtext">Zero packet drop rate across 10Gbps dual taps</div>
+                    </div>
+
+                    <div class="metric-card green">
+                        <div class="metric-header">
+                            <span class="metric-label">NORMAL TRAFFIC INTEGRITY</span>
+                            <div class="metric-icon-wrap green">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <polyline points="9 12 11 14 15 10"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric-value-wrap">
+                            <span class="metric-value text-green" id="kpiNormalPercent">98.37%</span>
+                            <span class="metric-delta text-green">CLEAN</span>
+                        </div>
+                        <div class="metric-subtext">Verified legitimate RFC compliant packet flows</div>
+                    </div>
+
+                    <div class="metric-card red">
+                        <div class="metric-header">
+                            <span class="metric-label">INTRUSIONS NEUTRALIZED</span>
+                            <div class="metric-icon-wrap red">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric-value-wrap">
+                            <span class="metric-value text-red" id="kpiIntrusionsCount">142</span>
+                            <span class="metric-delta danger">BLOCKED</span>
+                        </div>
+                        <div class="metric-subtext">DDoS floods, brute force, port scans & SQLi exploits</div>
+                    </div>
+
+                    <div class="metric-card purple">
+                        <div class="metric-header">
+                            <span class="metric-label">ENSEMBLE INFERENCE LATENCY</span>
+                            <div class="metric-icon-wrap purple">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                    <rect x="9" y="9" width="6" height="6"></rect>
+                                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric-value-wrap">
+                            <span class="metric-value text-purple" id="kpiLatency">1.42 ms</span>
+                            <span class="metric-delta text-purple">REALTIME</span>
+                        </div>
+                        <div class="metric-subtext">Dual Random Forest + Autoencoder pipeline</div>
+                    </div>
+
+                </div>
+
+                <!-- Real-Time Oscilloscope & Threat Breakdown Grid -->
+                <div class="dash-viz-grid">
+
+                    <!-- Live Oscilloscope Traffic Stream -->
+                    <div class="viz-card flex-2">
+                        <div class="card-title-bar">
+                            <div class="title-with-icon">
+                                <span class="radar-dot"></span>
+                                <span class="card-heading">LIVE NETWORK TRAFFIC SPECTRUM & INTRUSION SPIKES</span>
+                            </div>
+                            <div class="spectrum-legend">
+                                <span class="legend-chip normal"><span class="bullet green"></span> Normal Traffic
+                                    Flow</span>
+                                <span class="legend-chip anomaly"><span class="bullet red"></span> Anomalous Intrusion
+                                    Spike</span>
+                            </div>
+                        </div>
+                        <div class="canvas-wrap">
+                            <canvas id="trafficCanvas" width="800" height="240"></canvas>
+                        </div>
+                        <div class="canvas-bottom-stats">
+                            <div class="c-stat"><span>SYN/ACK Ratio:</span> <strong id="statSynAck">1.02</strong>
+                                (Balanced)</div>
+                            <div class="c-stat"><span>Mean Flow Entropy:</span> <strong id="statEntropy">4.31</strong>
+                                bits/byte</div>
+                            <div class="c-stat"><span>Ingest Buffer:</span> <strong class="text-green">0.08%
+                                    LOAD</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Threat Classification Distribution -->
+                    <div class="viz-card flex-1">
+                        <div class="card-title-bar">
+                            <div class="title-with-icon">
+                                <svg class="icon text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                    <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                                </svg>
+                                <span class="card-heading">ATTACK VECTOR DISTRIBUTION</span>
+                            </div>
+                        </div>
+
+                        <div class="attack-vector-list">
+                            <div class="vector-row">
+                                <div class="vector-meta">
+                                    <span class="v-name">SYN Flood (DDoS)</span>
+                                    <span class="v-pct text-red">38.4%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill red" style="width: 38.4%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="vector-row">
+                                <div class="vector-meta">
+                                    <span class="v-name">Stealth Port Scan (Recon)</span>
+                                    <span class="v-pct text-amber">26.1%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill amber" style="width: 26.1%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="vector-row">
+                                <div class="vector-meta">
+                                    <span class="v-name">SQL Injection & Exploits</span>
+                                    <span class="v-pct text-purple">17.8%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill purple" style="width: 17.8%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="vector-row">
+                                <div class="vector-meta">
+                                    <span class="v-name">SSH / RDP Brute Force</span>
+                                    <span class="v-pct text-cyan">11.5%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill cyan" style="width: 11.5%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="vector-row">
+                                <div class="vector-meta">
+                                    <span class="v-name">Botnet C2 Beaconing</span>
+                                    <span class="v-pct text-green">6.2%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill green" style="width: 6.2%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mitre-tag-cloud">
+                            <span class="mitre-badge">MITRE ATT&CK: T1498</span>
+                            <span class="mitre-badge">T1046</span>
+                            <span class="mitre-badge">T1190</span>
+                            <span class="mitre-badge">T1110</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Live Detected Packets Table -->
+                <div class="dash-table-card">
+                    <div class="card-title-bar">
+                        <div class="title-with-icon">
+                            <svg class="icon text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            <span class="card-heading">RECENT NETWORK FLOWS & TELEMETRY STREAM</span>
+                        </div>
+                        <div class="table-actions">
+                            <span class="table-counter" id="tableRecordCount">Showing 8 live captured flows</span>
+                            <button class="btn btn-sm btn-secondary" id="refreshTableBtn">Simulate Burst</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="soc-table" id="livePacketsTable">
+                            <thead>
+                                <tr>
+                                    <th>TIMESTAMP</th>
+                                    <th>SOURCE IP : PORT</th>
+                                    <th>DESTINATION IP : PORT</th>
+                                    <th>PROTO</th>
+                                    <th>FLAGS / SIG</th>
+                                    <th>AI SCORE</th>
+                                    <th>STATUS / CLASSIFICATION</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="livePacketsTableBody">
+                                <!-- Dynamically generated in app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- VIEW 3: UPLOAD / ENTER NETWORK DATA        -->
+            <!-- ========================================== -->
+            <section class="view-panel" id="view-ingest">
+
+                <div class="section-intro">
+                    <div class="intro-left">
+                        <h2 class="section-heading">INGESTION ENGINE // NETWORK DATA INPUT</h2>
+                        <p class="section-desc">
+                            Manually craft individual network flow feature vectors or ingest multi-record batch files
+                            (PCAP, CSV, JSON) for deep neural inspection.
+                        </p>
+                    </div>
+                    <!-- Ingestion Mode Selector Tabs -->
+                    <div class="tab-pills" id="ingestModeTabs">
+                        <button class="tab-pill active" data-tab="tab-manual">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            <span>Enter Network Data (Packet Crafter)</span>
+                        </button>
+                        <button class="tab-pill" data-tab="tab-upload">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <span>Upload Network Data (File / Batch)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT 1: MANUAL PACKET CRAFTER -->
+                <div class="ingest-tab-content active" id="tab-manual">
+
+                    <!-- Preset Attack Vectors Banner -->
+                    <div class="presets-container">
+                        <div class="preset-label-bar">
+                            <span class="label-heading">QUICK LOAD REALISTIC THREAT & BENIGN PRESETS:</span>
+                            <span class="preset-hint">Click any preset to prefill flow parameters and explore how the AI
+                                responds</span>
+                        </div>
+                        <div class="preset-chips-grid">
+                            <button type="button" class="preset-btn benign active" data-preset="benign_http">
+                                <span class="preset-icon">🟢</span>
+                                <span class="preset-name">Normal HTTPS Web Browsing</span>
+                                <span class="preset-sub">Port 443 // TLS 1.3 // Benign</span>
+                            </button>
+
+                            <button type="button" class="preset-btn threat" data-preset="syn_flood">
+                                <span class="preset-icon">🔴</span>
+                                <span class="preset-name">DDoS SYN Flood</span>
+                                <span class="preset-sub">High SYN Rate // 0 ACK // Volumetric</span>
+                            </button>
+
+                            <button type="button" class="preset-btn threat" data-preset="port_scan">
+                                <span class="preset-icon">🟠</span>
+                                <span class="preset-name">Nmap Stealth SYN Port Scan</span>
+                                <span class="preset-sub">Sequential Ports // Reconnaissance</span>
+                            </button>
+
+                            <button type="button" class="preset-btn threat" data-preset="ssh_brute">
+                                <span class="preset-icon">🔴</span>
+                                <span class="preset-name">SSH / RDP Brute Force</span>
+                                <span class="preset-sub">Port 22 // 50 Failed Logins</span>
+                            </button>
+
+                            <button type="button" class="preset-btn threat" data-preset="sqli_attack">
+                                <span class="preset-icon">🟣</span>
+                                <span class="preset-name">SQL Injection & Data Exfil</span>
+                                <span class="preset-sub">' UNION SELECT // High Entropy</span>
+                            </button>
+
+                            <button type="button" class="preset-btn threat" data-preset="c2_beacon">
+                                <span class="preset-icon">⚠️</span>
+                                <span class="preset-name">Mirai / C2 Botnet Beacon</span>
+                                <span class="preset-sub">Port 4444 // Periodic Heartbeat</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Network Data Feature Input Form -->
+                    <form id="packetForm" class="packet-crafter-form">
+                        <div class="form-columns-grid">
+
+                            <!-- Column 1: Network Layer & Addressing -->
+                            <div class="form-card">
+                                <div class="card-subheading">
+                                    <span class="sub-num">01</span>
+                                    <span>NETWORK ADDRESSING & PROTOCOL</span>
+                                </div>
+
+                                <div class="input-grid-2">
+                                    <div class="form-group">
+                                        <label for="pktProtocol">PROTOCOL</label>
+                                        <select id="pktProtocol" class="cyber-select">
+                                            <option value="TCP" selected>TCP (Transmission Control)</option>
+                                            <option value="UDP">UDP (User Datagram)</option>
+                                            <option value="ICMP">ICMP (Internet Control)</option>
+                                            <option value="HTTP">HTTP/HTTPS</option>
+                                            <option value="DNS">DNS (Domain Name)</option>
+                                            <option value="SSH">SSH (Secure Shell)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pktDuration">FLOW DURATION (ms)</label>
+                                        <input type="number" id="pktDuration" value="280" min="0" step="1">
+                                    </div>
+                                </div>
+
+                                <div class="input-grid-2">
+                                    <div class="form-group">
+                                        <label for="pktSrcIp">SOURCE IP ADDRESS</label>
+                                        <input type="text" id="pktSrcIp" value="192.168.1.105" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pktSrcPort">SOURCE PORT</label>
+                                        <input type="number" id="pktSrcPort" value="54210" min="1" max="65535" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-grid-2">
+                                    <div class="form-group">
+                                        <label for="pktDstIp">DESTINATION IP ADDRESS</label>
+                                        <input type="text" id="pktDstIp" value="10.0.0.1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pktDstPort">DESTINATION PORT</label>
+                                        <input type="number" id="pktDstPort" value="443" min="1" max="65535" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pktPacketSize">AVERAGE PACKET SIZE (BYTES)</label>
+                                    <div class="range-with-value">
+                                        <input type="range" id="pktPacketSize" min="40" max="65535" value="1420"
+                                            class="cyber-slider">
+                                        <span class="range-display" id="dispPacketSize">1420 B</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Column 2: TCP Flags & Flow Statistics -->
+                            <div class="form-card">
+                                <div class="card-subheading">
+                                    <span class="sub-num">02</span>
+                                    <span>TCP FLAGS & CONNECTION BEHAVIOR</span>
+                                </div>
+
+                                <div class="flags-matrix">
+                                    <div class="flag-counter-item">
+                                        <label for="pktSynCount">SYN FLAGS</label>
+                                        <input type="number" id="pktSynCount" value="1" min="0">
+                                    </div>
+                                    <div class="flag-counter-item">
+                                        <label for="pktAckCount">ACK FLAGS</label>
+                                        <input type="number" id="pktAckCount" value="1" min="0">
+                                    </div>
+                                    <div class="flag-counter-item">
+                                        <label for="pktRstCount">RST (RESET)</label>
+                                        <input type="number" id="pktRstCount" value="0" min="0">
+                                    </div>
+                                    <div class="flag-counter-item">
+                                        <label for="pktFinCount">FIN (FINISH)</label>
+                                        <input type="number" id="pktFinCount" value="1" min="0">
+                                    </div>
+                                    <div class="flag-counter-item">
+                                        <label for="pktUrgCount">URG / PSH</label>
+                                        <input type="number" id="pktUrgCount" value="0" min="0">
+                                    </div>
+                                    <div class="flag-counter-item">
+                                        <label for="pktFailedLogins">FAILED LOGINS</label>
+                                        <input type="number" id="pktFailedLogins" value="0" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label for="pktPacketRate">PACKET FLOW RATE (PKTS/SEC)</label>
+                                    <div class="range-with-value">
+                                        <input type="range" id="pktPacketRate" min="1" max="50000" value="12"
+                                            class="cyber-slider">
+                                        <span class="range-display" id="dispPacketRate">12 pkts/s</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pktSameSrvRate">SAME SRV RATE RATIO (0.0 - 1.0)</label>
+                                    <div class="range-with-value">
+                                        <input type="range" id="pktSameSrvRate" min="0" max="100" value="100"
+                                            class="cyber-slider">
+                                        <span class="range-display" id="dispSameSrvRate">1.00</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Column 3: Payload & Heuristic Entropy -->
+                            <div class="form-card">
+                                <div class="card-subheading">
+                                    <span class="sub-num">03</span>
+                                    <span>PAYLOAD INSPECTION & SHANNON ENTROPY</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pktPayload">PAYLOAD STRING (ASCII / SQL / SHELLCODE)</label>
+                                    <textarea id="pktPayload" rows="4" class="cyber-textarea"
+                                        placeholder="Enter HTTP headers, raw payload, or query string..."></textarea>
+                                </div>
+
+                                <!-- Live Entropy Meter -->
+                                <div class="entropy-meter-wrap">
+                                    <div class="entropy-header">
+                                        <span class="entropy-title">SHANNON ENTROPY:</span>
+                                        <span class="entropy-value" id="dispEntropy">3.42 bits/byte</span>
+                                        <span class="entropy-eval text-green" id="dispEntropyEval">NORMAL
+                                            (TEXT/JSON)</span>
+                                    </div>
+                                    <div class="entropy-bar-track">
+                                        <div class="entropy-bar-fill" id="entropyBarFill" style="width: 42%;"></div>
+                                    </div>
+                                    <div class="entropy-scale">
+                                        <span>0.0 (Uniform)</span>
+                                        <span>4.0 (Normal Text)</span>
+                                        <span>7.5+ (Encrypted / Shellcode)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Action -->
+                                <div class="form-actions-bottom">
+                                    <button type="submit" class="btn btn-primary btn-glow btn-block"
+                                        id="btnLaunchAIAnalysis">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                        </svg>
+                                        <span>EXECUTE AI/ML INFERENCE PIPELINE</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <!-- TAB CONTENT 2: FILE / BATCH DATA UPLOAD -->
+                <div class="ingest-tab-content hidden" id="tab-upload">
+
+                    <div class="upload-drop-zone" id="fileDropZone">
+                        <input type="file" id="datasetFileInput" accept=".csv, .json, .txt, .pcap"
+                            class="file-input-hidden">
+                        <div class="drop-zone-content">
+                            <div class="upload-icon-pulse">
+                                <svg class="icon-xl text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                            <h3 class="drop-title">DRAG & DROP NETWORK DATASET (CSV, JSON, PCAP LOG)</h3>
+                            <p class="drop-desc">Supports KDD-Cup99, NSL-KDD, CIC-IDS2017, Zeek/Bro JSON, or NetFlow
+                                telemetry dumps</p>
+
+                            <div class="drop-actions">
+                                <button type="button" class="btn btn-secondary" id="browseFileBtn">
+                                    <span>Browse Local File</span>
+                                </button>
+                                <button type="button" class="btn btn-outline" id="loadSampleBatchBtn">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                    <span>Load Bundled KDD/CIC-IDS Sample (8 Records)</span>
+                                </button>
+                                <button type="button" class="btn btn-outline" id="downloadSampleCsvBtn"
+                                    title="Download sample CSV template">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    <span>Download Sample CSV Template</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Batch Preview Table -->
+                    <div class="batch-preview-container" id="batchPreviewSection">
+                        <div class="batch-preview-header">
+                            <div class="batch-title-info">
+                                <span class="card-heading" id="batchFileName">SAMPLE_CICIDS_2017_SUBSET.CSV</span>
+                                <span class="batch-badge" id="batchRecordCount">8 Records Loaded</span>
+                            </div>
+                            <div class="batch-actions">
+                                <button class="btn btn-primary" id="btnRunBatchAnalysis">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    <span>Run Batch AI Classifier On All Records</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="soc-table" id="batchDataTable">
+                                <thead>
+                                    <tr>
+                                        <th>ROW</th>
+                                        <th>SOURCE IP</th>
+                                        <th>DEST IP</th>
+                                        <th>PROTO</th>
+                                        <th>DURATION</th>
+                                        <th>SYN</th>
+                                        <th>ACK</th>
+                                        <th>FAILED LOGINS</th>
+                                        <th>AI PREDICTION</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="batchTableBody">
+                                    <!-- Populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- VIEW 4: AI/ML ANALYSIS PIPELINE            -->
+            <!-- ========================================== -->
+            <section class="view-panel" id="view-analysis">
+
+                <div class="section-intro">
+                    <div class="intro-left">
+                        <h2 class="section-heading">AI/ML NEURAL INFERENCE ENGINE // ENSEMBLE PIPELINE</h2>
+                        <p class="section-desc">
+                            Real-time vector extraction, dual-model probability evaluation (Random Forest + Deep
+                            Autoencoder Anomaly Scoring), and Explainable AI (XAI) feature attribution.
+                        </p>
+                    </div>
+                    <div class="pipeline-actions">
+                        <button class="btn btn-secondary" id="btnReplayAnalysis">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                            </svg>
+                            <span>Re-Run Pipeline</span>
+                        </button>
+                        <button class="btn btn-primary" id="btnJumpToVerdict">
+                            <span>View Final Verdict →</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Multi-Stage Pipeline Graph -->
+                <div class="pipeline-stages-grid">
+
+                    <!-- Stage 1: Feature Vectorization -->
+                    <div class="stage-card" id="stage1Card">
+                        <div class="stage-header">
+                            <div class="stage-tag">STAGE 01</div>
+                            <div class="stage-status-chip" id="stage1Status">COMPLETED</div>
+                        </div>
+                        <h3 class="stage-title">Feature Extraction & Scaling</h3>
+                        <p class="stage-desc">StandardScaler tensor mapping across 14 flow dimensions</p>
+
+                        <div class="tensor-matrix" id="tensorMatrixDisplay">
+                            <!-- Dynamically populated feature chips -->
+                        </div>
+
+                        <div class="stage-meta-footer">
+                            <span>Norm Space: [-3.0, +3.0]</span>
+                            <span class="text-green">Dimensions: 14</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2: Dual Ensemble Inference -->
+                    <div class="stage-card" id="stage2Card">
+                        <div class="stage-header">
+                            <div class="stage-tag">STAGE 02</div>
+                            <div class="stage-status-chip" id="stage2Status">ACTIVE</div>
+                        </div>
+                        <h3 class="stage-title">Ensemble Model Inference</h3>
+                        <p class="stage-desc">Supervised classification + unsupervised anomaly thresholding</p>
+
+                        <!-- Model A & B Dual Cards -->
+                        <div class="dual-models-box">
+                            <div class="sub-model-box">
+                                <div class="sub-model-header">
+                                    <span class="model-name">RANDOM FOREST (100 TREES)</span>
+                                    <span class="model-score text-red" id="rfConfidenceText">98.4%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill red" id="rfProgressBar" style="width: 98%;"></div>
+                                </div>
+                                <div class="sub-model-eval" id="rfEvalText">Strong indicator of Volumetric DoS</div>
+                            </div>
+
+                            <div class="sub-model-box">
+                                <div class="sub-model-header">
+                                    <span class="model-name">AUTOENCODER ANOMALY SCORE</span>
+                                    <span class="model-score text-amber" id="aeAnomalyText">0.78 / 1.00</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-fill amber" id="aeProgressBar" style="width: 78%;"></div>
+                                </div>
+                                <div class="sub-model-eval" id="aeEvalText">Exceeds 0.35 baseline threshold</div>
+                            </div>
+                        </div>
+
+                        <div class="stage-meta-footer">
+                            <span>Ensemble Agreement: 100%</span>
+                            <span class="text-cyan">Latency: 1.4ms</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3: Explainable AI (XAI / SHAP) -->
+                    <div class="stage-card" id="stage3Card">
+                        <div class="stage-header">
+                            <div class="stage-tag">STAGE 03</div>
+                            <div class="stage-status-chip" id="stage3Status">EXPLAINABLE</div>
+                        </div>
+                        <h3 class="stage-title">Explainable AI (SHAP Impact)</h3>
+                        <p class="stage-desc">Feature contribution towards Intrusion vs Normal verdict</p>
+
+                        <div class="shap-bars-container" id="shapBarsContainer">
+                            <!-- Dynamically populated in app.js -->
+                        </div>
+
+                        <div class="stage-meta-footer">
+                            <span>Interpretability: Shapley Additive</span>
+                            <span class="text-purple">Confidence: 99.1%</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Terminal Diagnostic Telemetry Console -->
+                <div class="analysis-terminal-card">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-amber"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="terminal-title">SENTINEL_INFERENCE_ENGINE_V4.2.LOG</div>
+                        <div class="terminal-action">
+                            <span class="text-muted">LIVE INFERENCE STREAM</span>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="analysisLogBody">
+                        <div class="log-line"><span class="log-time">[14:15:02.102]</span> <span
+                                class="log-info">[INGEST]</span> Vectorizing flow packet payload...</div>
+                        <div class="log-line"><span class="log-time">[14:15:02.103]</span> <span
+                                class="log-info">[TENSOR]</span> Extracted 14 dimensional feature tensor. MinMax scaled
+                            [0, 1].</div>
+                        <div class="log-line"><span class="log-time">[14:15:02.104]</span> <span
+                                class="log-warn">[ENSEMBLE]</span> Evaluating Random Forest (100 estimators)...</div>
+                        <div class="log-line"><span class="log-time">[14:15:02.105]</span> <span
+                                class="log-warn">[ANOMALY]</span> Autoencoder reconstruction error L2 computed.
+                            Threshold checked.</div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ======================================================= -->
+            <!-- VIEW 5: VERDICT (NORMAL TRAFFIC OR INTRUSION DETECTED) -->
+            <!-- ======================================================= -->
+            <section class="view-panel" id="view-verdict">
+
+                <div class="verdict-wrapper" id="verdictWrapper">
+
+                    <!-- STATE A: NORMAL TRAFFIC CARD (Shown when benign) -->
+                    <div class="verdict-banner-card verdict-normal hidden" id="cardVerdictNormal">
+                        <div class="verdict-glow-halo green"></div>
+
+                        <div class="verdict-hero-icon-wrap green">
+                            <svg class="icon-verdict" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 12 11 14 15 10"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="verdict-badge green">BENIGN TRAFFIC VERIFIED</div>
+                        <h1 class="verdict-title text-green">NORMAL NETWORK TRAFFIC</h1>
+                        <p class="verdict-subtitle">
+                            All packet heuristics, Shannon payload entropy, TCP flag ratios, and neural autoencoder
+                            reconstruction loss fall strictly within established baseline boundaries.
+                        </p>
+
+                        <!-- Normal Traffic Telemetry Details -->
+                        <div class="verdict-stats-row">
+                            <div class="v-stat-item">
+                                <span class="v-lbl">MODEL CONFIDENCE</span>
+                                <span class="v-val text-green" id="normConfVal">99.4%</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">ANOMALY COEFFICIENT</span>
+                                <span class="v-val text-green" id="normAnomalyVal">0.038 / 1.00</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">TCP HANDSHAKE</span>
+                                <span class="v-val text-green">VALID RFC 793</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">RISK LEVEL</span>
+                                <span class="v-val text-green">SAFE // LOW (0/100)</span>
+                            </div>
+                        </div>
+
+                        <div class="verdict-actions-bar">
+                            <button class="btn btn-secondary" id="btnNormalTestAnother">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="1 4 1 10 7 10"></polyline>
+                                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                </svg>
+                                <span>Inspect Another Packet</span>
+                            </button>
+                            <button class="btn btn-primary" id="btnNormalViewReport">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <span>Generate Audit Log & Baseline Report</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- STATE B: INTRUSION DETECTED CARD (Shown when malicious) -->
+                    <div class="verdict-banner-card verdict-intrusion" id="cardVerdictIntrusion">
+                        <div class="verdict-glow-halo red"></div>
+
+                        <div class="verdict-hero-icon-wrap red pulse-alarm">
+                            <svg class="icon-verdict text-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                                </path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+
+                        <div class="verdict-badge red alarm-flicker">CRITICAL SECURITY ALERT // ACTIVE THREAT</div>
+                        <h1 class="verdict-title text-red">INTRUSION DETECTED</h1>
+
+                        <div class="threat-classification-banner" id="verdictThreatBanner">
+                            <span class="threat-name-badge" id="threatClassificationTitle">DISTRIBUTED DENIAL OF SERVICE
+                                (SYN FLOOD)</span>
+                            <span class="threat-severity-badge critical" id="threatSeverityBadge">SEVERITY:
+                                CRITICAL</span>
+                        </div>
+
+                        <p class="verdict-subtitle" id="threatExplanationText">
+                            High-frequency SYN packet flood detected with 0 ACK responses, indicative of resource
+                            exhaustion and half-open connection starvation against the target server.
+                        </p>
+
+                        <!-- Intrusion Telemetry Details -->
+                        <div class="verdict-stats-row">
+                            <div class="v-stat-item">
+                                <span class="v-lbl">MODEL CONFIDENCE</span>
+                                <span class="v-val text-red" id="threatConfVal">98.8%</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">MITRE ATT&CK ID</span>
+                                <span class="v-val text-red" id="threatMitreVal">T1498.001</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">ATTACKER IP / VECTOR</span>
+                                <span class="v-val text-amber" id="threatSrcIpVal">192.168.1.105</span>
+                            </div>
+                            <div class="v-stat-item">
+                                <span class="v-lbl">AUTOMATED RESPONSE</span>
+                                <span class="v-val text-red" id="threatAutoActionVal">ISOLATION READY</span>
+                            </div>
+                        </div>
+
+                        <div class="verdict-actions-bar">
+                            <button class="btn btn-danger btn-glow" id="btnVerdictTriggerAlert">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <span>TRIGGER ALERT & OPEN FORENSIC REPORT →</span>
+                            </button>
+                            <button class="btn btn-secondary" id="btnVerdictQuickBlock">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                                </svg>
+                                <span>Instant Block IP (Firewall Drop)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- VIEW 6: ALERT + FORENSIC REPORT           -->
+            <!-- ========================================== -->
+            <section class="view-panel" id="view-report">
+
+                <!-- Live Alert Dispatch Notification Banner -->
+                <div class="alert-dispatch-banner" id="reportAlertBanner">
+                    <div class="banner-alarm-icon">
+                        <svg class="icon-lg text-red pulse-alarm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </div>
+                    <div class="banner-text">
+                        <div class="banner-title" id="alertBannerHeading">SECURITY INCIDENT NOTIFICATION DISPATCHED
+                        </div>
+                        <div class="banner-desc" id="alertBannerSub">
+                            High-priority incident ticket created in SIEM (Splunk/QRadar) and automated SOAR
+                            orchestration response triggered.
+                        </div>
+                    </div>
+                    <div class="banner-actions">
+                        <button class="btn btn-sm btn-danger" id="btnAcknowledgeAlert">Acknowledge Alert</button>
+                    </div>
+                </div>
+
+                <!-- SOAR Automated Playbook Actions Panel -->
+                <div class="soar-actions-card">
+                    <div class="card-title-bar">
+                        <div class="title-with-icon">
+                            <svg class="icon text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            <span class="card-heading">SOAR AUTOMATED CONTAINMENT PLAYBOOK (ACTIVE MITIGATION)</span>
+                        </div>
+                        <span class="soar-status-badge text-green" id="soarRuleStatus">RULE READY</span>
+                    </div>
+
+                    <div class="soar-buttons-grid">
+                        <button class="btn-soar-action" id="soarBtnBlockIp">
+                            <div class="soar-btn-icon red">🛑</div>
+                            <div class="soar-btn-text">
+                                <span class="soar-btn-title">Firewall IP Drop</span>
+                                <span class="soar-btn-desc">Add iptables & Cloudflare WAF block</span>
+                            </div>
+                        </button>
+
+                        <button class="btn-soar-action" id="soarBtnIsolateSubnet">
+                            <div class="soar-btn-icon amber">🔒</div>
+                            <div class="soar-btn-text">
+                                <span class="soar-btn-title">Isolate Host/Subnet</span>
+                                <span class="soar-btn-desc">VLAN quarantine via Cisco/Arista</span>
+                            </div>
+                        </button>
+
+                        <button class="btn-soar-action" id="soarBtnRateLimit">
+                            <div class="soar-btn-icon cyan">⚡</div>
+                            <div class="soar-btn-text">
+                                <span class="soar-btn-title">Apply Token Bucket</span>
+                                <span class="soar-btn-desc">Throttle source to 1 pkt/sec</span>
+                            </div>
+                        </button>
+
+                        <button class="btn-soar-action" id="soarBtnHoneypot">
+                            <div class="soar-btn-icon purple">🕸️</div>
+                            <div class="soar-btn-text">
+                                <span class="soar-btn-title">Divert to Honeypot</span>
+                                <span class="soar-btn-desc">Capture zero-day payload</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Terminal Command for Block -->
+                    <div class="soar-cmd-output" id="soarCmdOutput">
+                        <div class="soar-cmd-header">
+                            <span>GENERATED FIREWALL MITIGATION SYNTAX</span>
+                            <button class="btn-copy-code" id="btnCopyFirewallRule" title="Copy to clipboard">
+                                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy Rule</span>
+                            </button>
+                        </div>
+                        <pre class="terminal-code" id="firewallCodeBlock"><code># Sentinel Autonomous IPS Enforcement
+iptables -I INPUT -s 192.168.1.105 -j DROP
+nft add rule inet filter input ip saddr 192.168.1.105 drop
+aws wafv2 update-ip-set --name "Sentinel_Blocked_IPs" --addresses "192.168.1.105/32"</code></pre>
+                    </div>
+                </div>
+
+                <!-- FORMAL INCIDENT FORENSIC REPORT (PRINTABLE & EXPORTABLE) -->
+                <div class="report-paper-card" id="printableReportSection">
+
+                    <!-- Report Header -->
+                    <div class="report-header-section">
+                        <div class="report-header-top">
+                            <div class="report-brand">
+                                <img src="assets/logo.jpg" alt="Sentinel Logo" class="report-logo-img">
+                                <div>
+                                    <div class="report-title-main">CYBER INTELLIGENCE & FORENSIC INCIDENT REPORT</div>
+                                    <div class="report-agency">NATIONAL DEFENSE NETWORK OPERATIONS CENTER // SENTINEL AI
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-meta-box">
+                                <div><strong>INCIDENT ID:</strong> <span id="repIncidentId">INC-2026-9814-SEC</span>
+                                </div>
+                                <div><strong>TIMESTAMP:</strong> <span id="repTimestamp">2026-10-07 14:18:42 UTC</span>
+                                </div>
+                                <div><strong>ANALYST:</strong> <span id="repAnalystName">Alex Mercer (L3)</span></div>
+                                <div><strong>CLASSIFICATION:</strong> <span class="text-red"
+                                        id="repClassMark">CONFIDENTIAL // LAW ENFORCEMENT SENSITIVE</span></div>
+                            </div>
+                        </div>
+                        <hr class="report-divider">
+                    </div>
+
+                    <!-- Section 1: Executive Summary -->
+                    <div class="rep-section">
+                        <h3 class="rep-heading">1. EXECUTIVE INCIDENT SUMMARY</h3>
+                        <p class="rep-p" id="repExecSummary">
+                            At 14:18:42 UTC, the Sentinel AI Ensemble Intrusion Detection System detected an
+                            unauthorized high-volume transmission targeting internal cluster ingress. The machine
+                            learning pipeline identified signature markers and statistical anomalies consistent with a
+                            Distributed Denial of Service (SYN Flood) attack originating from 192.168.1.105.
+                        </p>
+                        <div class="rep-summary-grid">
+                            <div class="rep-kv"><span class="k">Attack Classification:</span> <strong id="repAttackType"
+                                    class="text-red">DDoS (SYN Flood)</strong></div>
+                            <div class="rep-kv"><span class="k">Severity Rating:</span> <strong id="repSeverity"
+                                    class="text-red">CRITICAL (CVSS 8.9)</strong></div>
+                            <div class="rep-kv"><span class="k">Confidence Index:</span> <strong id="repConfidence"
+                                    class="text-green">98.8%</strong></div>
+                            <div class="rep-kv"><span class="k">MITRE Technique:</span> <strong id="repMitre">T1498 -
+                                    Network Denial of Service</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Flow Diagnostics -->
+                    <div class="rep-section">
+                        <h3 class="rep-heading">2. NETWORK FLOW DIAGNOSTICS & TELEMETRY</h3>
+                        <div class="table-responsive">
+                            <table class="soc-table light-border">
+                                <thead>
+                                    <tr>
+                                        <th>PARAMETER</th>
+                                        <th>DETECTED VALUE</th>
+                                        <th>BASELINE NORMAL</th>
+                                        <th>VARIANCE / DELTA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="repFlowDiagnosticsBody">
+                                    <tr>
+                                        <td>Source IP & Port</td>
+                                        <td id="repSrcIpPort">192.168.1.105:54210</td>
+                                        <td>RFC 1918 Standard</td>
+                                        <td>Targeted Host</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Target Destination</td>
+                                        <td id="repDstIpPort">10.0.0.1:443</td>
+                                        <td>Production Gateway</td>
+                                        <td>Mission Critical</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SYN Flag Volume</td>
+                                        <td id="repSynCount">45,000 pkts/s</td>
+                                        <td>&lt; 50 pkts/s</td>
+                                        <td class="text-red">+89,900% (Anomaly)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACK Response Ratio</td>
+                                        <td id="repAckCount">0 pkts/s</td>
+                                        <td>&gt; 95% of SYN</td>
+                                        <td class="text-red">-100% (Half-Open Exploit)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shannon Payload Entropy</td>
+                                        <td id="repEntropy">3.42 bits/byte</td>
+                                        <td>3.0 - 5.5 bits/byte</td>
+                                        <td>Normal Range</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: AI Inference Explainability -->
+                    <div class="rep-section">
+                        <h3 class="rep-heading">3. MACHINE LEARNING DECISION LOG & EXPLAINABILITY (XAI)</h3>
+                        <p class="rep-p">
+                            The primary feature driving the decision is the abnormal ratio between SYN transmissions and
+                            ACK confirmations, accompanied by a rapid flow duration spike. The deep autoencoder computed
+                            a reconstruction loss of <strong id="repAutoencoderLoss">0.78</strong> against the
+                            non-malicious baseline manifold (cutoff threshold: 0.35).
+                        </p>
+                    </div>
+
+                    <!-- Section 4: Mitigation & Remediation Playbook -->
+                    <div class="rep-section">
+                        <h3 class="rep-heading">4. RECOMMENDED REMEDIATION & CONTAINMENT PLAYBOOK</h3>
+                        <ul class="rep-remediation-list" id="repRemediationList">
+                            <li><strong>Immediate Perimeter Blackhole:</strong> Implement BGP Flowspec or edge firewall
+                                drop for host IP <code>192.168.1.105</code>.</li>
+                            <li><strong>SYN Cookies Activation:</strong> Verify kernel setting
+                                <code>net.ipv4.tcp_syncookies = 1</code> across upstream load balancers.</li>
+                            <li><strong>Reverse Proxy Rate Limiting:</strong> Enforce strict per-IP connection limits
+                                (max 50 concurrent handshakes/sec).</li>
+                            <li><strong>Post-Incident SIEM Query:</strong> Correlate past 72 hours of proxy access logs
+                                for reconnaissance activity from adjacent /24 subnets.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Sign-off Block -->
+                    <div class="rep-signoff-row">
+                        <div class="signoff-box">
+                            <div class="signoff-lbl">VERIFYING OFFICER</div>
+                            <div class="signoff-val" id="repOfficerSign">Alex Mercer // Lead Incident Responder</div>
+                            <div class="signoff-sig">CERTIFIED SECURE RECORD</div>
+                        </div>
+                        <div class="signoff-box">
+                            <div class="signoff-lbl">SYSTEM CRYPTO STAMP</div>
+                            <div class="signoff-val font-mono">SHA256: 9e83b4c19a...71fa28e0</div>
+                            <div class="signoff-sig">INTEGRITY VERIFIED</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Export & Share Buttons -->
+                <div class="report-export-bar">
+                    <button class="btn btn-primary btn-glow" id="btnPrintReport">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                            <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                        <span>Print / Save Forensic PDF</span>
+                    </button>
+
+                    <button class="btn btn-secondary" id="btnExportJson">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Export SIEM JSON Payload</span>
+                    </button>
+
+                    <button class="btn btn-outline" id="btnRestartWorkflow">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        <span>Start New Analysis Cycle</span>
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER STATUS BAR -->
+        <footer class="app-footer">
+            <div class="footer-left">
+                <span class="status-indicator"></span>
+                <span>SENTINEL NIDS NODE #04 // DEEP INSPECTION ENGINE ACTIVE</span>
+            </div>
+            <div class="footer-mid">
+                <span>WORKFLOW: [Login] → [Dashboard] → [Upload/Enter] → [AI/ML Analysis] → [Normal/Intrusion] → [Alert
+                    + Report]</span>
+            </div>
+            <div class="footer-right">
+                <span>SECURITY LEVEL: SECRET // NOFORN</span>
+                <span class="system-clock font-mono" id="systemClock">2026-10-07 14:19:00</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-hub" id="toastHub" aria-live="polite"></div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{
+    "name": "ai-ids-sentinel",
+    "version": "1.0.0",
+    "description": "AI/ML Powered Network Intrusion Detection System Dashboard & Forensics",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "cybersecurity",
+        "ids",
+        "nids",
+        "machine-learning",
+        "soc",
+        "intrusion-detection"
+    ],
+    "author": "DeepMind CyberSec",
+    "license": "MIT"
+}
